@@ -1,0 +1,140 @@
+---
+title: "Untitled"
+format: html
+---
+```{python}
+import os
+os.chdir("/Users/morganakinlan/Library/Mobile Documents/com~apple~CloudDocs/Documents/TidyTuesday/2025-04-22")
+```
+
+```{python}
+import PyDyTuesday
+import pandas as pd
+import matplotlib.pyplot as plt
+from pandas.plotting import autocorrelation_plot
+
+# Download files from the week, which you can then read in locally
+PyDyTuesday.get_date('2025-04-22')
+
+df=pd.read_csv("daily_accidents.csv")
+raw=pd.read_csv("daily_accidents.csv")
+```
+
+```{python}
+df['date'] = pd.to_datetime(df['date'])
+
+df.set_index('date',inplace=True)
+
+monthly_series = df.resample('ME').sum()
+
+
+
+```
+```{python}
+
+monthly_series.plot()
+month_auto=monthly_series['fatalities_count']
+month_auto=month_auto.reset_index(drop=True)
+```
+
+## Viz
+
+```{python}
+# Assuming your DataFrame is named 'df' and has a DateTime index
+yearly_df = df.resample('YE').sum() # or .mean(), .last(), etc.
+
+## OR can group this way, same results
+
+raw['year'] = pd.to_datetime(raw['date']).dt.year
+grouped_year = raw.groupby('year')['fatalities_count'].sum()
+
+
+
+
+```
+
+
+
+
+
+ ## Time-Series Analysis
+```{python}
+
+#removing trend
+diff_series = month_auto.diff().dropna()
+plot_acf(diff_series, lags=40) #lag is one month, 40 is 40 months
+```
+
+
+Autocorrelation plots show how correlated the time series is with its past values (months). 
+
+Lag 1 is comparing each month to the one before it. So Dec.2016 vs Nov 2016, but also Nov 2016 to Oct 2016. 
+
+Value[t] vs Value[t-1]  produces two vectors. The Pearson correlation coefficient between those two aligned vectors gives the autocorrelation at lag 1. 
+
+x : Always start with t1 instead of t0, because t0 is the beginning of the data and you can't compare it to anything before it (nothing there). 
+y: Lose last value as well b/c nothing comes after it.
+
+#correlation(x,y) is the autocorrelation at lag k:
+x = diff_series[k:]
+y = diff_series[:-k]
+
+```{python}
+import numpy as np
+
+#at Lag 1
+x = diff_series[1:]
+y = diff_series[:-1]
+
+x = np.array(x)
+y = np.array(y)
+
+# Manually compute Pearson r
+x_mean = x.mean()
+y_mean = y.mean()
+
+numerator = np.sum((x - x_mean) * (y - y_mean))
+denominator = np.sqrt(np.sum((x - x_mean)**2)) * np.sqrt(np.sum((y - y_mean)**2))
+
+r = numerator / denominator
+print(f"Manual Pearson correlation (lag 1): {r}")
+
+#or
+
+# x,y is same as y,x, so just pick out number that isn't 1 from resulting matrix
+np.corrcoef(x,y) 
+
+```
+
+Autocorrelation plot is differenced to remove trend component, but seasonality has been left in. 
+
+Lag zero is a perfect correlation, but lag zero is always a perfect correlation because the x and y vectors are identical. You're comparing the time series against itself with no lag, so perfect correlation. 
+
+Very strong seasonal components.
+Spikes at 6 month intervals. Negative spikes on lag 6 and positive on lag 12, etc.
+
+Comparing with seasonality removed. 
+
+```{python}
+seasonal_diff=diff_series.diff(12).dropna()
+
+x = seasonal_diff[1:]
+y = seasonal_diff[:-1]
+np.corrcoef(x,y) 
+
+plot_acf(seasonal_diff, lags=60) #go back 5 years, good for finding seasonality
+```
+
+Still looks like pretty strong seasonality, around Dec and Jan (lag 1, 12,13)
+
+Lag 1 spike can reflect short-term autocorrelation (current month related to prior month). Each month is moderately influenced by the prior month. 
+
+Lag at 12, makes me think each month is moderately influenced by the same month the year prior.
+
+
+```{python}
+plt.clf()
+plt.close('all')
+
+```
+
