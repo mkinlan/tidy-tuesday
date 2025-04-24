@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Fatal Car Crashes"
 format: html
 ---
 ```{python}
@@ -133,6 +133,7 @@ Lag at 12, makes me think each month is moderately influenced by the same month 
 
 
 ```{python}
+#Clear plots if they are getting jammed up
 plt.clf()
 plt.close('all')
 
