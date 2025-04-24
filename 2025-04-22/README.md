@@ -18,4 +18,4 @@ Since this is a negative correlation, the relationship between any given month a
 
 Another moderately significant lag is at Lag 12. Using the same logic as above, this might be interpreted as "Each month is moderately influenced by the same month in the year prior. If September of last year was high, then September of this year is moderately likely to be lower."
 
-![plot](plot.png)
+![plot](tidytuesday422.png)
