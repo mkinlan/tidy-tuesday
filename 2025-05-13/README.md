@@ -4,9 +4,9 @@ This week's [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/m
 
 I took the opportunity to learn more about how to use Plotly. In particular, the syntax for graphing objects, which I was unfamiliar with. 
 
-I also struggled with (but eventually succeeded!) in creating text box annotations. Let me tell you, those two text boxes took waaaay to long to position properly using code. 
+I also struggled with (but eventually succeeded!) in creating text box annotations, which took far too long to position properly using code. 
 
-Professional advice - if you have to do this for work, save yourself 45 minutes and just copy the chart as an image and add a text box in Powerpoint.
+Professional advice - if this is for work, save yourself 45 minutes and just copy the chart as an image, then add a text box in Powerpoint.
 
 ![plot](vesuvius.jpeg)
 
