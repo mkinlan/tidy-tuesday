@@ -4,4 +4,4 @@ This repot contains final code for my TidyTuesday projects after I post them to 
 
 If you're not familiar with this project, this weekly social data project involves exploring a new data set each week and creating a visualization. Participants are encouraged to explore, try new things, and not be afraid to make ugly visualizations. My goal with these projects is to explore new plotting tools and try different visualizations that I haven't made as often. 
 
-Citation: Data Science Learning Community (2024). Tidy Tuesday: A weekly social data project. https://tidytues.day
+Citation: Data Science Learning Community (2025). Tidy Tuesday: A weekly social data project. https://tidytues.day
