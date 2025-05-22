@@ -7,6 +7,7 @@ I took the opportunity to learn more about how to use Plotly. In particular, the
 I also struggled with (but eventually succeeded!) in creating text box annotations. Let me tell you, those two text boxes took waaaay to long to position properly using code. 
 
 Professional advice - if you have to do this for work, save yourself 45 minutes and just copy the chart as an image and add a text box in Powerpoint.
+
 ![plot](vesuvius.jpeg)
 
 
