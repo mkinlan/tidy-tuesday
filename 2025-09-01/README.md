@@ -3,10 +3,9 @@
 This week's [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/main/data/2025/2025-09-02/readme.md) data is 
 Australian frog data curated by Jessica Moore. This data is collected by citizen scientists throughout Australia, and is both informative, and adorable, because frogs. 
 
-Thank you, Jessica, for curating, and to the citizen scientists of Australia for your efforts collecting this data! https://lnkd.in/e63TjRC7
-![plot](plot-118.png)
+Thank you, Jessica, for curating, and to the citizen scientists of Australia for your efforts collecting this data!
 
-See below code used to create it:
+![plot](plot-118.png)
 
 ```{r}
 pacman::p_load(readr,ggplot2,dplyr, viridis,tidyr, ozmaps,sf)
