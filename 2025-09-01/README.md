@@ -4,7 +4,7 @@ This week's [#TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/m
 Australian frog data curated by Jessica Moore. This data is collected by citizen scientists throughout Australia, and is both informative, and adorable, because frogs. 
 
 Thank you, Jessica, for curating, and to the citizen scientists of Australia for your efforts collecting this data! https://lnkd.in/e63TjRC7
-![plot](netflix.png)
+![plot](plot-118.png)
 
 See below code used to create it:
 
